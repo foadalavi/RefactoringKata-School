@@ -60,7 +60,7 @@
                                 AddModule(calculator);
                                 break;
                             case 3:
-                                Console.WriteLine(calculator.GetWAM());
+                                Console.WriteLine(calculator.GetWeightedAverageMark());
                                 break;
                             case 4:
                                 calculator = new ResultCalculator();
