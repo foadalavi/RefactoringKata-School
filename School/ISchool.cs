@@ -9,5 +9,6 @@ namespace School
     public interface ISchool
     {
         string GetGrade(float result);
+        float CalculateWeight(List<Module> modules);
     }
 }

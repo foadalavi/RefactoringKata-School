@@ -2,7 +2,6 @@
 {
     public class HighSchool : ISchool
     {
-
         public void CalculateHighSchoolWeight(ref float bonus, ref float sum, ref float totalWeigh, Module module)
         {
             if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
@@ -68,6 +67,81 @@
 
             sum = sum + (module.Weight * module.Mark) + bonus;
             totalWeigh = totalWeigh + module.Weight;
+        }
+
+        public float CalculateWeight(List<Module> modules)
+        {
+            var bonus = 0f;
+            var sum = 0f;
+            var totalWeigh = 0f;
+            foreach (var module in modules)
+            {
+                if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
+                {
+                    if (module.Mark < 5)
+                    {
+                        bonus = bonus + 0;
+                    }
+                    else if (module.Mark < 8)
+                    {
+                        bonus = bonus + module.Weight * 2;
+                    }
+                    else
+                    {
+                        bonus = bonus + module.Weight * 3;
+                    }
+                }
+                else if (module.Name.ToLower().Trim() == "Physics".ToLower().Trim())
+                {
+                    if (module.Mark < 5)
+                    {
+                        bonus = bonus + 0;
+                    }
+                    else if (module.Mark < 8)
+                    {
+                        bonus = bonus + module.Weight;
+                    }
+                    else
+                    {
+                        bonus = bonus + module.Weight * 2;
+                    }
+                }
+                else if (module.Name.ToLower().Trim() == "Chemistry".ToLower().Trim())
+                {
+                    if (module.Mark < 5)
+                    {
+                        bonus = bonus + 0;
+                    }
+                    else if (module.Mark < 8)
+                    {
+                        bonus = bonus + 0.75F;
+                    }
+                    else
+                    {
+                        bonus = bonus + (module.Weight * 1.5f);
+                    }
+                }
+                else
+                {
+                    if (module.Mark < 5)
+                    {
+                        bonus = bonus + 0;
+                    }
+                    else if (module.Mark < 8)
+                    {
+                        bonus = bonus + 0;
+                    }
+                    else
+                    {
+                        bonus = bonus + module.Weight;
+                    }
+                }
+
+                sum = sum + (module.Weight * module.Mark) + bonus;
+                totalWeigh = totalWeigh + module.Weight;
+
+            }
+            return sum / totalWeigh;
         }
 
         public string GetGrade(float result)

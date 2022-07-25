@@ -38,30 +38,23 @@
             }
             return school.GetGrade(result);
         }
+
         private float CalculateWeight()
         {
-            var bonus = 0f;
-            var sum = 0f;
-            var totalWeigh = 0f;
-            foreach (var module in Modules)
+            ISchool school = null;
+            if (StudentLevel == "Primary School".ToLower().Trim())
             {
-                if (StudentLevel == "Primary School".ToLower().Trim())
-                {
-                    var primarySchool = new PrimarySchool();
-                    primarySchool.CalculatePrimarySchoolWeight(ref sum, ref totalWeigh, module);
-                }
-                else if (StudentLevel == "Middel school".ToLower().Trim())
-                {
-                    var middleSchool = new MiddleSchool();
-                    middleSchool.CalculateMiddleSchoolWeight(ref bonus, ref sum, ref totalWeigh, module);
-                }
-                else if (StudentLevel == "High school".ToLower().Trim())
-                {
-                    var highSchool = new HighSchool();
-                    highSchool.CalculateHighSchoolWeight(ref bonus, ref sum, ref totalWeigh, module);
-                }
+                school = new PrimarySchool();
             }
-            return sum / totalWeigh;
+            else if (StudentLevel == "Middel school".ToLower().Trim())
+            {
+                school = new MiddleSchool();
+            }
+            else if (StudentLevel == "High school".ToLower().Trim())
+            {
+                school = new HighSchool();
+            }
+            return school.CalculateWeight(Modules);
         }
     }
 }

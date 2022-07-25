@@ -28,5 +28,17 @@
                 return $"{result}/10 => A";
             }
         }
+
+        public float CalculateWeight(List<Module> modules)
+        {
+            var sum = 0f;
+            var totalWeigh = 0f;
+            foreach (var module in modules)
+            {
+                sum = sum + (module.Weight * module.Mark);
+                totalWeigh = totalWeigh + module.Weight;
+            }
+            return sum / totalWeigh;
+        }
     }
 }
