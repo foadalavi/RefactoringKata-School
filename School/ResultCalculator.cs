@@ -11,6 +11,7 @@ namespace School
         private string _studentLevel;
 
         public string StudentName { get; set; }
+
         public string StudentLevel
         {
             get { return _studentLevel; }
