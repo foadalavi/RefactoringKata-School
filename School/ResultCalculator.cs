@@ -21,22 +21,23 @@
 
         private string GetGrade(float result)
         {
+            ISchool school = null;
             switch (StudentLevel)
             {
                 case "primary school":
-                    var primarySchool = new PrimarySchool();
-                    return primarySchool.GetGrade(result);
+                    school = new PrimarySchool();
+                    break;
                 case "middle school":
-                    var middleSchool = new MiddleSchool();
-                    return middleSchool.GetGrade(result);
+                    school = new MiddleSchool();
+                    break;
                 case "high school":
-                    var highSchool = new HighSchool();
-                    return highSchool.GetGrade(result);
+                    school = new HighSchool();
+                    break;
                 default:
                     return "No match found!";
             }
+            return school.GetGrade(result);
         }
-
         private float CalculateWeight()
         {
             var bonus = 0f;

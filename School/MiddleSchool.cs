@@ -1,6 +1,6 @@
 ﻿namespace School
 {
-    public class MiddleSchool
+    public class MiddleSchool : ISchool
     {
 
         public void CalculateMiddleSchoolWeight(ref float bonus, ref float sum, ref float totalWeigh, Module module)
