@@ -9,7 +9,7 @@
             totalWeigh = totalWeigh + module.Weight;
         }
 
-        public string GetPrimarySchoolGrade(float result)
+        public string GetGrade(float result)
         {
             if (result < 5)
             {
