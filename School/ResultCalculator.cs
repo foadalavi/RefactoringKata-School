@@ -138,143 +138,158 @@ namespace School
             {
                 if (StudentLevel == "Primary School".ToLower().Trim())
                 {
-                    sum = sum + (module.Weight * module.Mark);
-                    totalWeigh = totalWeigh + module.Weight;
+                    CalculatePrimarySchoolWeight(ref sum, ref totalWeigh, module);
                 }
                 else if (StudentLevel == "Middel school".ToLower().Trim())
                 {
-                    if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + module.Weight * 1;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight * 1.5F;
-                        }
-                    }
-                    else if (module.Name.ToLower().Trim() == "Physics".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + module.Weight * 0.5F;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight * 1;
-                        }
-                    }
-                    else if (module.Name.ToLower().Trim() == "Chemistry".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + 0.2F;
-                        }
-                        else
-                        {
-                            bonus = bonus + (module.Weight * 0.5f);
-                        }
-                    }
-                    else
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight * 0.5F;
-                        }
-                    }
-
-                    sum = sum + (module.Weight * module.Mark) + bonus;
-                    totalWeigh = totalWeigh + module.Weight;
+                    CalculateMiddleSchoolWeight(ref bonus, ref sum, ref totalWeigh, module);
                 }
                 else if (StudentLevel == "High school".ToLower().Trim())
                 {
-                    if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + module.Weight * 2;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight * 3;
-                        }
-                    }
-                    else if (module.Name.ToLower().Trim() == "Physics".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + module.Weight;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight * 2;
-                        }
-                    }
-                    else if (module.Name.ToLower().Trim() == "Chemistry".ToLower().Trim())
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + 0.75F;
-                        }
-                        else
-                        {
-                            bonus = bonus + (module.Weight * 1.5f);
-                        }
-                    }
-                    else
-                    {
-                        if (module.Mark < 5)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else if (module.Mark < 8)
-                        {
-                            bonus = bonus + 0;
-                        }
-                        else
-                        {
-                            bonus = bonus + module.Weight;
-                        }
-                    }
-
-                    sum = sum + (module.Weight * module.Mark) + bonus;
-                    totalWeigh = totalWeigh + module.Weight;
+                    CalculateHighSchoolWeight(ref bonus, ref sum, ref totalWeigh, module);
                 }
             }
             return sum / totalWeigh;
+        }
+
+        private void CalculateHighSchoolWeight(ref float bonus, ref float sum, ref float totalWeigh, Module module)
+        {
+            if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + module.Weight * 2;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight * 3;
+                }
+            }
+            else if (module.Name.ToLower().Trim() == "Physics".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + module.Weight;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight * 2;
+                }
+            }
+            else if (module.Name.ToLower().Trim() == "Chemistry".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + 0.75F;
+                }
+                else
+                {
+                    bonus = bonus + (module.Weight * 1.5f);
+                }
+            }
+            else
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + 0;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight;
+                }
+            }
+
+            sum = sum + (module.Weight * module.Mark) + bonus;
+            totalWeigh = totalWeigh + module.Weight;
+        }
+
+        private void CalculateMiddleSchoolWeight(ref float bonus, ref float sum, ref float totalWeigh, Module module)
+        {
+            if (module.Name.ToLower().Trim() == "Math".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + module.Weight * 1;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight * 1.5F;
+                }
+            }
+            else if (module.Name.ToLower().Trim() == "Physics".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + module.Weight * 0.5F;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight * 1;
+                }
+            }
+            else if (module.Name.ToLower().Trim() == "Chemistry".ToLower().Trim())
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + 0.2F;
+                }
+                else
+                {
+                    bonus = bonus + (module.Weight * 0.5f);
+                }
+            }
+            else
+            {
+                if (module.Mark < 5)
+                {
+                    bonus = bonus + 0;
+                }
+                else if (module.Mark < 8)
+                {
+                    bonus = bonus + 0;
+                }
+                else
+                {
+                    bonus = bonus + module.Weight * 0.5F;
+                }
+            }
+
+            sum = sum + (module.Weight * module.Mark) + bonus;
+            totalWeigh = totalWeigh + module.Weight;
+        }
+
+        private void CalculatePrimarySchoolWeight(ref float sum, ref float totalWeigh, Module module)
+        {
+            sum = sum + (module.Weight * module.Mark);
+            totalWeigh = totalWeigh + module.Weight;
         }
     }
 }
