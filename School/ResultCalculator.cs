@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace School
+﻿namespace School
 {
     public class ResultCalculator
     {
@@ -19,7 +13,6 @@ namespace School
         }
         public List<Module> Modules { get; set; }
 
-
         public string GetWeightedAverageMark()
         {
             var result = CalculateWeight();
@@ -31,33 +24,14 @@ namespace School
             switch (StudentLevel)
             {
                 case "primary school":
-                    return GetPrimarySchoolGrade(result);
+                    var primarySchool = new PrimarySchool();
+                    return primarySchool.GetPrimarySchoolGrade(result);
                 case "middle school":
                     return GetMiddleSchoolGrade(result);
                 case "high school":
                     return GetHighSchoolGrade(result);
                 default:
                     return "No match found!";
-            }
-        }
-
-        private string GetPrimarySchoolGrade(float result)
-        {
-            if (result < 5)
-            {
-                return $"{result}/10 => D";
-            }
-            else if (result < 7)
-            {
-                return $"{result}/10 => C";
-            }
-            else if (result < 9)
-            {
-                return $"{result}/10 => B";
-            }
-            else
-            {
-                return $"{result}/10 => A";
             }
         }
 
@@ -138,7 +112,8 @@ namespace School
             {
                 if (StudentLevel == "Primary School".ToLower().Trim())
                 {
-                    CalculatePrimarySchoolWeight(ref sum, ref totalWeigh, module);
+                    var primarySchool = new PrimarySchool();
+                    primarySchool.CalculatePrimarySchoolWeight(ref sum, ref totalWeigh, module);
                 }
                 else if (StudentLevel == "Middel school".ToLower().Trim())
                 {
@@ -283,12 +258,6 @@ namespace School
             }
 
             sum = sum + (module.Weight * module.Mark) + bonus;
-            totalWeigh = totalWeigh + module.Weight;
-        }
-
-        private void CalculatePrimarySchoolWeight(ref float sum, ref float totalWeigh, Module module)
-        {
-            sum = sum + (module.Weight * module.Mark);
             totalWeigh = totalWeigh + module.Weight;
         }
     }
