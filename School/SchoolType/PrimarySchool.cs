@@ -40,5 +40,12 @@
             }
             return sum / totalWeigh;
         }
+
+        public string GetWeightedAverageMark(List<Module> modules)
+        {
+            var result = CalculateWeight(modules);
+
+            return GetGrade(result);
+        }
     }
 }

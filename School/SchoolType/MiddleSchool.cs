@@ -170,5 +170,12 @@
                 return $"{result}/10 => A";
             }
         }
+
+        public string GetWeightedAverageMark(List<Module> modules)
+        {
+            var result = CalculateWeight(modules);
+
+            return GetGrade(result);
+        }
     }
 }

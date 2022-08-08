@@ -144,6 +144,7 @@
             return sum / totalWeigh;
         }
 
+
         public string GetGrade(float result)
         {
             if (result < 5)
@@ -182,6 +183,13 @@
             {
                 return "A+";
             }
+        }
+
+        public string GetWeightedAverageMark(List<Module> modules)
+        {
+            var result = CalculateWeight(modules);
+
+            return GetGrade(result);
         }
     }
 }
