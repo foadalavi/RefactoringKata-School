@@ -89,7 +89,7 @@
             if (int.TryParse(Console.ReadLine(), out int weight))
 
             {
-                m.WeigthSet(weight);
+                m.WeightSet(weight);
             }
             else
             {

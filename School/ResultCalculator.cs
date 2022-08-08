@@ -21,9 +21,9 @@ namespace School
             return school.GetWeightedAverageMark(Modules);
         }
 
-        private ISchool GetSchool()
+        private BaseSchool GetSchool()
         {
-            ISchool school = null;
+            BaseSchool school = null;
             switch (StudentLevel)
             {
                 case "primary school":

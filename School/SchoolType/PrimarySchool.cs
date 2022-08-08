@@ -1,15 +1,8 @@
 ﻿namespace School.SchoolType
 {
-    public class PrimarySchool : ISchool
+    public class PrimarySchool : BaseSchool
     {
-
-        public void CalculatePrimarySchoolWeight(ref float sum, ref float totalWeigh, Module module)
-        {
-            sum = sum + module.Weight * module.Mark;
-            totalWeigh = totalWeigh + module.Weight;
-        }
-
-        public string GetGrade(float result)
+        protected override string GetGrade(float result)
         {
             if (result < 5)
             {
@@ -29,7 +22,7 @@
             }
         }
 
-        public float CalculateWeight(List<Module> modules)
+        protected override float CalculateWeight(List<Module> modules)
         {
             var sum = 0f;
             var totalWeigh = 0f;
@@ -39,13 +32,6 @@
                 totalWeigh = totalWeigh + module.Weight;
             }
             return sum / totalWeigh;
-        }
-
-        public string GetWeightedAverageMark(List<Module> modules)
-        {
-            var result = CalculateWeight(modules);
-
-            return GetGrade(result);
         }
     }
 }
