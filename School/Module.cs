@@ -19,7 +19,7 @@
             Mark = m;
         }
 
-        public void WeigthSet(int w)
+        public void WeightSet(int w)
         {
             if (w < 1)
             {

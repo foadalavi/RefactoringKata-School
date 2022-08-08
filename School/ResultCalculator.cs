@@ -1,4 +1,6 @@
-﻿namespace School
+﻿using School.SchoolType;
+
+namespace School
 {
     public class ResultCalculator
     {
@@ -15,13 +17,13 @@
 
         public string GetWeightedAverageMark()
         {
-            var result = CalculateWeight();
-            return GetGrade(result);
+            var school = GetSchool();
+            return school.GetWeightedAverageMark(Modules);
         }
 
-        private string GetGrade(float result)
+        private BaseSchool GetSchool()
         {
-            ISchool school = null;
+            BaseSchool school = null;
             switch (StudentLevel)
             {
                 case "primary school":
@@ -34,27 +36,9 @@
                     school = new HighSchool();
                     break;
                 default:
-                    return "No match found!";
+                    throw new Exception("No school selected");
             }
-            return school.GetGrade(result);
-        }
-
-        private float CalculateWeight()
-        {
-            ISchool school = null;
-            if (StudentLevel == "Primary School".ToLower().Trim())
-            {
-                school = new PrimarySchool();
-            }
-            else if (StudentLevel == "Middel school".ToLower().Trim())
-            {
-                school = new MiddleSchool();
-            }
-            else if (StudentLevel == "High school".ToLower().Trim())
-            {
-                school = new HighSchool();
-            }
-            return school.CalculateWeight(Modules);
+            return school;
         }
     }
 }
