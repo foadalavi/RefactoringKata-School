@@ -23,6 +23,12 @@ namespace School
 
         private string GetGrade(float result)
         {
+            var school = GetSchool();
+            return school.GetGrade(result);
+        }
+
+        private ISchool GetSchool()
+        {
             ISchool school = null;
             switch (StudentLevel)
             {
@@ -36,9 +42,9 @@ namespace School
                     school = new HighSchool();
                     break;
                 default:
-                    return "No match found!";
+                    throw new Exception("No school selected");
             }
-            return school.GetGrade(result);
+            return school;  
         }
 
         private float CalculateWeight()
