@@ -1,11 +1,11 @@
-﻿namespace School
+﻿namespace School.SchoolType
 {
     public class PrimarySchool : ISchool
     {
 
         public void CalculatePrimarySchoolWeight(ref float sum, ref float totalWeigh, Module module)
         {
-            sum = sum + (module.Weight * module.Mark);
+            sum = sum + module.Weight * module.Mark;
             totalWeigh = totalWeigh + module.Weight;
         }
 
@@ -35,7 +35,7 @@
             var totalWeigh = 0f;
             foreach (var module in modules)
             {
-                sum = sum + (module.Weight * module.Mark);
+                sum = sum + module.Weight * module.Mark;
                 totalWeigh = totalWeigh + module.Weight;
             }
             return sum / totalWeigh;

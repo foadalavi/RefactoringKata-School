@@ -1,4 +1,6 @@
-﻿namespace School
+﻿using School.SchoolType;
+
+namespace School
 {
     public class ResultCalculator
     {
